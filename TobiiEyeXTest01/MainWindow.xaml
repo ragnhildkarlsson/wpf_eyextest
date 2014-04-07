@@ -1,0 +1,23 @@
+﻿<Window x:Class="TobiiEyeXTest01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+        Title="MainWindow" Height="350" Width="525"
+        WindowStyle="None" ResizeMode="NoResize"  
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" Name="PaintingWindow" >
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="80*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0" Grid.Row="0" LastChildFill="True" Margin ="100 0 100 0" Name="menuPanel">
+            <Button Click="OnViewClick" DockPanel.Dock="Right" Content="Test" Name="TestButton"  ></Button>
+        </DockPanel>
+        <Image Grid.Row="1" Grid.Column="0" Name="currentImage"/>       
+    </Grid>
+
+    
+</Window>
