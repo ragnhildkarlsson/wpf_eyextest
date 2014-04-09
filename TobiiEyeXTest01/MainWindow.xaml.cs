@@ -35,7 +35,7 @@ namespace TobiiEyeXTest01
          Point gaze;
          bool paint = false;
          //bool menuActive = true;
-         Button activeButton;
+         //Button activeButton;
          Dictionary<InteractorId, Button> gazeAwareButtons;
             
 
@@ -245,9 +245,15 @@ namespace TobiiEyeXTest01
                 {
                     GazePointDataEventParams r;
                     if (behavior.TryGetGazePointDataEventParams(out r))
+                    {
+                        Stopwatch stopWatch = new Stopwatch();
+                        stopWatch.Start();                        
                         trackGaze(new Point(r.X, r.Y), paint, 200); //TODO Set keyhole size dynamically based on how bad the calibration is.
-                    this.Dispatcher.Invoke(()=> drawElipseOnCanvas(gaze, 100));
-                            
+                        this.Dispatcher.Invoke(()=> drawElipseOnCanvas(gaze, 100));
+                        stopWatch.Stop();
+                        TimeSpan ts = stopWatch.Elapsed;
+                        Console.Write("Inkommet ({0:N}, {1:N}). Utskrift tog {2:G} ms \n", r.X, r.Y, ts.TotalMilliseconds.ToString());
+                    }    
                 }
                 else if (behavior.BehaviorType == InteractionBehaviorType.GazeAware)
                 {
